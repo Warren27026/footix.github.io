@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Historique Compétition Footix</title>
+    <link href="style-accueil2.css" rel="stylesheet" media="all">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="logo">
+                <i class="fas fa-futbol"></i> Footix
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home" class="active">Accueil</a></li>
+                <li><a href="#competitions">Compétitions</a></li>
+                <li><a href="Page-quiz/accueil-quiz.html">Quiz</a></li>
+            </ul>
+        </nav>
+
+        <!-- Carrousel -->
+        <div class="carousel">
+            <div class="slides">
+                <div class="slide active" style="background-image: url('image/ldc.png');">
+                    <div class="caption">
+                        <i class="fas fa-trophy"></i> Ligue des Champions
+                    </div>
+                </div>
+                <div class="slide" style="background-image: url('image/real.jpg');">
+                    <div class="caption">
+                        <i class="fas fa-star"></i> Grands Moments
+                    </div>
+                </div>
+                <div class="slide" style="background-image: url('image/euro4.jpg');">
+                    <div class="caption">
+                        <i class="fas fa-flag"></i> Championnat d'Europe
+                    </div>
+                </div>
+                <div class="slide" style="background-image: url('image/coupe.jpeg');">
+                    <div class="caption">
+                        <i class="fas fa-globe"></i> Coupe du Monde
+                    </div>
+                </div>
+            </div>
+            <button class="prev"><i class="fas fa-chevron-left"></i></button>
+            <button class="next"><i class="fas fa-chevron-right"></i></button>
+            <div class="dots"></div>
+        </div>
+
+        <!-- Compétitions -->
+        <section class="competitions" id="competitions">
+            <h2><i class="fas fa-futbol"></i> Nos Compétitions</h2>
+            <div class="card-grid">
+                <div class="card" style="background-image: url('image/can3.jpeg');" onclick="window.location.href='page-historique/CAN.html'">
+                    <span><i class="fas fa-shield-alt"></i> CAN</span>
+                </div>
+                <div class="card" style="background-image: url('image/ldc2.jpeg');" onclick="window.location.href='page-historique/champions-league.html'">
+                    <span><i class="fas fa-trophy"></i> Champions League</span>
+                </div>
+                <div class="card" style="background-image: url('image/cm.jpeg');" onclick="window.location.href='page-historique/Coupe-Monde.html'">
+                    <span><i class="fas fa-globe"></i> Coupe du Monde</span>
+                </div>
+                <div class="card" style="background-image: url('image/euro3.jpg');" onclick="window.location.href='page-historique/euro.html'">
+                    <span><i class="fas fa-flag"></i> Euro</span>
+                </div>
+                <div class="card quiz" onclick="window.location.href='Page-quiz/accueil-quiz.html'">
+                    <span><i class="fas fa-question-circle"></i> Quiz</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p><i class="fas fa-copyright"></i> 2025 Football Historique. Tous droits réservés.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        const prev = document.querySelector('.prev');
+        const next = document.querySelector('.next');
+        const dotsContainer = document.querySelector('.dots');
+        let current = 0;
+
+        slides.forEach((_, i) => {
+            const dot = document.createElement('span');
+            dot.classList.add('dot');
+            if (i === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => showSlide(i));
+            dotsContainer.appendChild(dot);
+        });
+        const dots = document.querySelectorAll('.dot');
+
+        function showSlide(index) {
+            slides[current].classList.remove('active');
+            dots[current].classList.remove('active');
+            current = (index + slides.length) % slides.length;
+            slides[current].classList.add('active');
+            dots[current].classList.add('active');
+        }
+
+        prev.addEventListener('click', () => showSlide(current - 1));
+        next.addEventListener('click', () => showSlide(current + 1));
+        setInterval(() => showSlide(current + 1), 5000);
+
+        // Smooth scroll pour les liens
+        document.querySelectorAll('.nav-links a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                if (this.getAttribute('href').startsWith('#')) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

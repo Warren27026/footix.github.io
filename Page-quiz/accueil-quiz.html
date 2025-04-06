@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz Football</title>
+    <link href="style-accueil-quiz.css" rel="stylesheet" media="all">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="logo">
+                <i class="fas fa-futbol"></i> Footix Quiz
+            </div>
+            <ul class="nav-links">
+                <li><a href="../accueil.html">Accueil</a></li>
+                <li><a href="../page-historique/CAN.html">CAN</a></li>
+                <li><a href="../page-historique/champions-league.html">Champions League</a></li>
+                <li><a href="../page-historique/Coupe-Monde.html">Coupe du Monde</a></li>
+                <li><a href="../page-historique/euro.html">Euro</a></li>
+            </ul>
+        </nav>
+
+        <!-- Section Quiz -->
+        <section class="quiz-section">
+            <h1><i class="fas fa-question-circle"></i> Choisissez Votre Quiz</h1>
+            <div class="card-grid">
+                <div class="card" id="can" style="background-image: url('../image/can3.jpeg');" onclick="window.location.href='CAN.html'">
+                    <span><i class="fas fa-shield-alt"></i> CAN</span>
+                </div>
+                <div class="card" id="ldc" style="background-image: url('../image/ldc2.jpeg');" onclick="window.location.href='champions.html'">
+                    <span><i class="fas fa-trophy"></i> Champions League</span>
+                </div>
+                <div class="card" id="coupeM" style="background-image: url('../image/cm.jpeg');" onclick="window.location.href='coupeM.html'">
+                    <span><i class="fas fa-globe"></i> Coupe du Monde</span>
+                </div>
+                <div class="card" id="euro" style="background-image: url('../image/euro.jpeg');" onclick="window.location.href='euro.html'">
+                    <span><i class="fas fa-flag"></i> Euro</span>
+                </div>
+                <div class="card quiz" id="quiz" onclick="window.location.href='inter-comp.html'">
+                    <span><i class="fas fa-star"></i> Quiz Inter-Compétitions</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p><i class="fas fa-copyright"></i> 2025 Quiz Football. Tous droits réservés.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

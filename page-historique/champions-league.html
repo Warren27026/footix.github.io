@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ligue des Champions</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(to bottom, #e6f0ff, #f4f4f4);
+      line-height: 1.6;
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    /* Navbar */
+    nav {
+      background: linear-gradient(45deg, #0a3092, #1a5cd2);
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 28px;
+      font-weight: 700;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: 700;
+      transition: all 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #e6f0ff;
+    }
+
+    nav .nav-links {
+      display: flex;
+      gap: 25px;
+    }
+
+    nav .burger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+    }
+
+    nav .burger div {
+      width: 30px;
+      height: 3px;
+      background-color: #fff;
+      transition: all  menacing0.3s ease;
+    }
+
+    /* En-tête */
+    .entete {
+      background: linear-gradient(45deg, #0a3092, #1a5cd2);
+      color: white;
+      text-align: center;
+      padding: 60px 20px;
+      border-bottom: 3px solid #ffffff;
+      animation: fadeIn 1s ease;
+    }
+
+    .entete h1 {
+      font-size: 48px;
+      margin-bottom: 15px;
+      text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .entete p {
+      font-size: 20px;
+      font-weight: 400;
+    }
+
+    /* Sections */
+    .section {
+      padding: 50px 20px;
+      max-width: 1200px;
+      margin: 40px auto;
+      background: #ffffff;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(26, 92, 210, 0.2);
+      border: 3px solid #1a5cd2;
+      animation: slideUp 0.8s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .section h2 {
+      text-align: center;
+      font-size: 32px;
+      color: #0a3092;
+      margin-bottom: 25px;
+      text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .section h3 {
+      font-size: 24px;
+      color: #1a5cd2;
+      margin: 20px 0 10px;
+    }
+
+    .section p {
+      margin-bottom: 15px;
+      text-align: justify;
+      font-size: 16px;
+    }
+
+    /* Tableaux */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      border: 2px solid #1a5cd2;
+    }
+
+    table th, table td {
+      padding: 12px;
+      border: 1px solid #1a5cd2;
+      text-align: left;
+    }
+
+    table th {
+      background: linear-gradient(45deg, #0a3092, #1a5cd2);
+      color: white;
+      font-weight: 700;
+    }
+
+    table td {
+      background: #f9f9f9;
+    }
+
+    /* Galerie vidéo */
+    .video-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .video-item {
+      text-align: center;
+    }
+
+    .video-item video {
+      width: 100%;
+      border-radius: 10px;
+      border: 2px solid #1a5cd2;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .video-item h3 {
+      font-size: 18px;
+      color: #0a3092;
+      margin-top: 10px;
+    }
+
+    /* Footer */
+    footer {
+      background: linear-gradient(45deg, #0a3092, #1a5cd2);
+      color: white;
+      text-align: center;
+      padding: 30px;
+      border-top: 3px solid #ffffff;
+      box-shadow: 0 -5px 15px rgba(26, 92, 210, 0.3);
+    }
+
+    footer p {
+      margin: 10px 0;
+      font-size: 16px;
+    }
+
+    footer a {
+      color: #e6f0ff;
+      text-decoration: none;
+      font-weight: 700;
+      margin: 0 10px;
+      transition: all 0.3s ease;
+    }
+
+    footer a:hover {
+      color: #ffffff;
+      text-decoration: underline;
+    }
+
+    /* Audio */
+    audio {
+      display: none; /* Caché visuellement mais fonctionnel */
+    }
+
+    /* Menu burger pour mobile */
+    @media (max-width: 768px) {
+      nav {
+        padding: 15px;
+      }
+
+      nav .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        background: linear-gradient(45deg, #0a3092, #1a5cd2);
+        padding: 20px;
+        gap: 15px;
+      }
+
+      nav .nav-links.actif {
+        display: flex;
+      }
+
+      nav .burger {
+        display: flex;
+      }
+
+      .entete h1 { font-size: 36px; }
+      .entete p { font-size: 16px; }
+      .section h2 { font-size: 28px; }
+      .section h3 { font-size: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Barre de navigation -->
+  <nav>
+    <div class="logo">
+      <i class="fas fa-futbol"></i>
+      <a href="../accueil.html">Footix</a>
+      <a href="#">LDC</a>
+    </div>
+    <div class="nav-links" id="navLinks">
+      <a href="#palmares">Palmarès</a>
+      <a href="#historique">Historique</a>
+      <a href="#moments">Moments Mémorables</a>
+      <a href="../Page-quiz/champions.html">Quiz</a>
+    </div>
+    <!-- Menu burger -->
+    <div class="burger" id="burger">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </nav>
+
+  <!-- En-tête principale -->
+  <header class="entete">
+    <h1>Ligue des Champions</h1>
+    <p>Le sommet du football européen</p>
+  </header>
+
+ <!-- Section : Historique -->
+<section id="historique" class="section">
+    <h2>Historique de la Ligue des Champions</h2>
+    <p>
+      La <strong>Ligue des Champions</strong>, née en <strong>1955</strong> sous le nom de <strong>Coupe des Clubs Champions Européens</strong>, a été créée par l’UEFA pour réunir les champions nationaux européens. Le <strong>Real Madrid</strong> a dominé les débuts, remportant les cinq premières éditions (1956-1960) avec des stars comme Di Stéfano et Puskás. Les années 1960-1970 ont vu l’émergence de clubs comme l’<strong>Ajax</strong> (1971-1973), le <strong>Bayern Munich</strong> (1974-1976), et <strong>Liverpool</strong> (1977, 1978, 1981, 1984).
+    </p>
+    <p>
+      En <strong>1992</strong>, la compétition devient la <strong>Ligue des Champions</strong>, introduisant une phase de groupes et ouvrant la porte à plus de clubs. L’<strong>Olympique de Marseille</strong> marque l’histoire en 1993 comme premier vainqueur français. Les années 1990-2000 sont riches en moments iconiques : le retournement de <strong>Manchester United</strong> en 1999, le but de <strong>Zidane</strong> en 2002, et la remontée de <strong>Liverpool</strong> en 2005.
+    </p>
+    <p>
+      Depuis 2010, l’Espagne domine avec le <strong>FC Barcelone</strong> (2009, 2011, 2015) et le <strong>Real Madrid</strong> (2014, 2016-2018), qui atteint 14 titres au total. Aujourd’hui, la Ligue des Champions est le sommet du football de clubs, alliant prestige, intensité et stars mondiales.
+    </p>
+  </section>
+
+  <!-- Section : Palmarès -->
+  <section id="palmares" class="section">
+    <h2>Palmarès de la Ligue des Champions</h2>
+    <p>Voici la liste des clubs ayant remporté le plus de titres :</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Club</th>
+          <th>Nombre de victoires</th>
+          <th>Années de victoire</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Real Madrid</td>
+          <td>14</td>
+          <td>1956, 1957, 1958, 1959, 1960, 1966, 1998, 2000, 2002, 2014, 2016, 2017, 2018, 2022</td>
+        </tr>
+        <tr>
+          <td>AC Milan</td>
+          <td>7</td>
+          <td>1963, 1969, 1989, 1990, 1994, 2003, 2007</td>
+        </tr>
+        <tr>
+          <td>Liverpool</td>
+          <td>6</td>
+          <td>1977, 1978, 1981, 1984, 2005, 2019</td>
+        </tr>
+        <tr>
+          <td>FC Bayern Munich</td>
+          <td>6</td>
+          <td>1974, 1975, 1976, 2001, 2013, 2020</td>
+        </tr>
+        <tr>
+          <td>FC Barcelone</td>
+          <td>5</td>
+          <td>1992, 2006, 2009, 2011, 2015</td>
+        </tr>
+      </tbody>
+    </table>
+<section id="palmares" class="section">
+  <h2>Meilleurs Buteurs de l'Histoire de la Ligue des Champions</h2>
+  <p>Voici les joueurs ayant marqué le plus de buts dans la compétition :</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Rang</th>
+        <th>Joueur</th>
+        <th>Nationalité</th>
+        <th>Buts</th>
+        <th>Matchs Joués</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Cristiano Ronaldo</td>
+        <td>Portugal</td>
+        <td>141</td>
+        <td>183</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Lionel Messi</td>
+        <td>Argentine</td>
+        <td>129</td>
+        <td>163</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Robert Lewandowski</td>
+        <td>Pologne</td>
+        <td>103</td>
+        <td>129</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>Karim Benzema</td>
+        <td>France</td>
+        <td>90</td>
+        <td>152</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>Raúl González</td>
+        <td>Espagne</td>
+        <td>71</td>
+        <td>142</td>
+      </tr>
+      <tr>
+        <td>6</td>
+        <td>Ruud van Nistelrooy</td>
+        <td>Pays-Bas</td>
+        <td>56</td>
+        <td>73</td>
+      </tr>
+      <tr>
+        <td>6</td>
+        <td>Thomas Müller</td>
+        <td>Allemagne</td>
+        <td>56</td>
+        <td>154</td>
+      </tr>
+      <tr>
+        <td>8</td>
+        <td>Kylian Mbappé</td>
+        <td>France</td>
+        <td>55</td>
+        <td>85</td>
+      </tr>
+      <tr>
+        <td>9</td>
+        <td>Thierry Henry</td>
+        <td>France</td>
+        <td>50</td>
+        <td>112</td>
+      </tr>
+      <tr>
+        <td>10</td>
+        <td>Erling Haaland</td>
+        <td>Norvège</td>
+        <td>49</td>
+        <td>48</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+<section id="palmares" class="section">
+    <h2>Meilleurs Passeurs de l'Histoire de la Ligue des Champions</h2>
+    <p>Voici les joueurs ayant fourni le plus de passes décisives dans la compétition :</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Rang</th>
+          <th>Joueur</th>
+          <th>Nationalité</th>
+          <th>Passes Décisives</th>
+          <th>Matchs Joués</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Cristiano Ronaldo</td>
+          <td>Portugal</td>
+          <td>42</td>
+          <td>183</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Ángel Di María</td>
+          <td>Argentine</td>
+          <td>41</td>
+          <td>112</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Lionel Messi</td>
+          <td>Argentine</td>
+          <td>40</td>
+          <td>163</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Neymar</td>
+          <td>Brésil</td>
+          <td>33</td>
+          <td>81</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Ryan Giggs</td>
+          <td>Pays de Galles</td>
+          <td>31</td>
+          <td>145</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>Xavi Hernández</td>
+          <td>Espagne</td>
+          <td>30</td>
+          <td>157</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>Thomas Müller</td>
+          <td>Allemagne</td>
+          <td>30</td>
+          <td>154</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>Karim Benzema</td>
+          <td>France</td>
+          <td>29</td>
+          <td>152</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>Andrés Iniesta</td>
+          <td>Espagne</td>
+          <td>29</td>
+          <td>130</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>Kevin De Bruyne</td>
+          <td>Belgique</td>
+          <td>29</td>
+          <td>88</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Section : Moments mémorables -->
+  <section id="moments" class="section">
+    <h2>Moments Mémorables</h2>
+    <p>Revivez les matchs et moments iconiques qui ont marqué l'histoire de la Ligue des Champions.</p>
+    <div class="video-gallery">
+      <div class="video-item">
+        <video controls>
+          <source src="../image/ldc19992.mp4" type="video/mp4">
+          Votre navigateur ne prend pas en charge la balise vidéo.
+        </video>
+        <h3>Finale 1999 : Le miracle de Manchester United</h3>
+      </div>
+      <div class="video-item">
+        <video controls>
+          <source src="../image/ldc1999.mp4" type="video/mp4">
+          Votre navigateur ne prend pas en charge la balise vidéo.
+        </video>
+        <h3>Le but inoubliable de Zidane en 2002</h3>
+      </div>
+      <div class="video-item">
+        <video controls>
+          <source src="../image/ldc2017.mp4" type="video/mp4">
+          Votre navigateur ne prend pas en charge la balise vidéo.
+        </video>
+        <h3>Le "Remontada" de Barcelone en 2017</h3>
+      </div>
+    </div>
+  </section>
+
+  <!-- Musique en fond -->
+  <audio id="musique-fond" src="../image/UEFA Champions League - Main Theme.mp3" autoplay loop></audio>
+
+  <!-- Pied de page -->
+  <footer>
+    <p>© 2025 Football Historique. Tous droits réservés.</p>
+    <p>
+      <a href="#palmares">Palmarès</a> | 
+      <a href="#historique">Historique</a> | 
+      <a href="#moments">Moments Mémorables</a>
+    </p>
+  </footer>
+
+  <script>
+    // Fonction pour basculer l'affichage du menu burger
+    const boutonBurger = document.getElementById('burger');
+    const navLinks = document.getElementById('navLinks'); // Correction du nom de la variable
+
+    boutonBurger.addEventListener('click', () => {
+      navLinks.classList.toggle('actif');
+    });
+
+    // Contrôle du volume de la musique
+    const musiqueFond = document.getElementById('musique-fond');
+    musiqueFond.volume = 0.6; // Volume à 60%
+  </script>
+</body>
+</html>
